@@ -1,0 +1,69 @@
+{
+	"meta" : {
+		"name" : "Corpus Callosum",
+		"author" : "Geiss",
+		"version" : 1,
+		"url" : "http://",
+		"description" : ""
+	},
+
+	"vars" : {
+		"gamma" : 1.9,
+		"decay" : 0.98,
+		"videoEcho" : {
+			"zoom" : 2,
+			"alpha" : 0,
+			"orientation" : 0
+		},
+		"zoom" : 1,
+		"rotation" : 0.006,
+		"center" : { x : 0.5, y : 0.5 },
+		"direction" : { x : 0.5, y : 0.5 },
+		"stretch" : { x : 0.5, y : 0.5 },
+	},
+
+	"waves" : [
+		{
+			"waveMode" : 3,
+			"additive" : false,
+			"drawAsDots" : false,
+			"modAlphaByVolume" : false,
+			"maximizeColor" : true,
+			"color" : { r:0.9, g:0.45, b:0 },
+			"center" : { x : 0.5, y : 0.5 }
+		}
+	],
+
+	shapes : [],
+
+	perFrame : function() {
+		wave_r = wave_r + 0.100*( 0.60*sin(0.933*time) + 0.40*sin(1.045*time) );
+		wave_g = wave_g + 0.050*( 0.60*sin(0.900*time) + 0.40*sin(0.956*time) );
+		decay = decay - 0.01*equal(frame%40,0);
+		sx = sx + max(0,max(bass_att,bass)-1)*0.5;
+	}
+
+/*
+bTexWrap=1
+bDarkenCenter=0
+bMotionVectorsOn=0
+bRedBlueStereo=0
+nMotionVectorsX=12
+nMotionVectorsY=9
+fWaveAlpha=4.4
+fWaveScale=1.605447
+fWaveSmoothing=0.9
+fWaveParam=0
+fModWaveAlphaStart=0.75
+fModWaveAlphaEnd=0.95
+fWarpAnimSpeed=1
+fWarpScale=2.853
+fZoomExponent=1
+fShader=0
+
+per_pixel_1=zoom=0.9615+rad*0.1;
+fRating=1
+*/
+
+
+}
