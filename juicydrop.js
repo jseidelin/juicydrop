@@ -410,11 +410,12 @@ function drawWave(soundData, ctx, settings, frameData, screenWidth, screenHeight
 
 // I hate parsing text files and I'm not very good at it.
 function parseMilk(milkString) {
-	var lines = milkString.split("\r\n");
+	var lines = milkString.split("\n");
 	var presets = [];
+	var i;
 
 	var numPresets = 0;
-	for (var i=0;i<lines.length;i++) {
+	for (i = 0; i < lines.length; i++) {
 		if (lines[i].substring(0,7) === "[preset") {
 			numPresets++;
 			presets.push({lines:[]});
@@ -424,7 +425,7 @@ function parseMilk(milkString) {
 			}
 		}
 	}
-	for (var i=0;i<presets.length;i++) {
+	for (i = 0; i < presets.length; i++) {
 		presets[i] = parseMilkPreset(presets[i].lines);
 	}
 
